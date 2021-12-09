@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func CheckErr(err error) {
@@ -33,4 +34,33 @@ func Atoi(s string) (i int) {
 		panic(err.Error())
 	}
 	return
+}
+
+func Min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func Abs(i int) int {
+	if i < 0 {
+		return -i
+	}
+	return i
+}
+
+func ReadIntString(s string) []int {
+	result := []int{}
+	for _, n := range strings.Split(s, ",") {
+		result = append(result, Atoi(n))
+	}
+	return result
 }

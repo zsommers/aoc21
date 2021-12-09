@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestCheckErr(t *testing.T) {
@@ -73,6 +74,29 @@ func TestAtoi(t *testing.T) {
 				assert.NotPanics(t, func() { output = Atoi(tt.input) })
 				assert.Equal(t, tt.expected, output)
 			}
+		})
+	}
+}
+
+func Test_readIntString(t *testing.T) {
+	tests := []struct {
+		s    string
+		want []int
+	}{
+		{
+			s:    "16,1,2,0,4,2,7,1,2,14",
+			want: []int{16, 1, 2, 0, 4, 2, 7, 1, 2, 14},
+		},
+		{
+			s:    "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1",
+			want: []int{7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.s, func(t *testing.T) {
+			var result []int
+			require.NotPanics(t, func() { result = ReadIntString(tt.s) })
+			assert.Equal(t, tt.want, result)
 		})
 	}
 }
