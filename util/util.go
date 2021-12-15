@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+var MaxInt = int(^uint(0) >> 1)
+
 func CheckErr(err error) {
 	if err != nil {
 		panic(err.Error())

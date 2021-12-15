@@ -28,7 +28,7 @@ func A(input []string) int {
 		max = util.Max(max, p)
 		min = util.Min(min, p)
 	}
-	c := int(^uint(0) >> 1)
+	c := util.MaxInt
 	for i := min; i < max; i++ {
 		c = util.Min(c, costA(positions, i))
 	}
@@ -42,7 +42,7 @@ func B(input []string) int {
 		max = util.Max(max, p)
 		min = util.Min(min, p)
 	}
-	c := int(^uint(0) >> 1)
+	c := util.MaxInt
 	for i := min; i < max; i++ {
 		c = util.Min(c, costB(positions, i))
 	}
