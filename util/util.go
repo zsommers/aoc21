@@ -38,18 +38,24 @@ func Atoi(s string) (i int) {
 	return
 }
 
-func Min(a, b int) int {
-	if a < b {
-		return a
+func Min(is ...int) int {
+	m := MaxInt
+	for _, i := range is {
+		if i < m {
+			m = i
+		}
 	}
-	return b
+	return m
 }
 
-func Max(a, b int) int {
-	if a > b {
-		return a
+func Max(is ...int) int {
+	m := -MaxInt - 1
+	for _, i := range is {
+		if i > m {
+			m = i
+		}
 	}
-	return b
+	return m
 }
 
 func Abs(i int) int {
